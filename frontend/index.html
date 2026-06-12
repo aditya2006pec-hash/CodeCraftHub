@@ -541,7 +541,7 @@
       <!-- Toast container -->
       <div class="toast-container" id="toast-container"></div>
 
-      <!-- Course List -->
+      <!-- Course List-->
       <section class="course-list-section">
         <div class="list-header">
           <h2 class="section-title">Your Courses</h2>
@@ -730,12 +730,21 @@
     }
 
     function getFormData(prefix) {
-      return {
-        name: $('#' + prefix + 'name').value.trim(),
-        description: $('#' + prefix + 'description').value.trim(),
-        target_date: $('#' + prefix + 'target-date').value,
-        status: $('#' + prefix + 'status').value,
-      };
+        if (prefix === 'edit-') {
+            return {
+            name: document.querySelector('#edit-name').value.trim(),
+            description: document.querySelector('#edit-description').value.trim(),
+            target_date: document.querySelector('#edit-target-date').value,
+            status: document.querySelector('#edit-status').value,
+            };
+        }
+
+        return {
+            name: document.querySelector('#course-name').value.trim(),
+            description: document.querySelector('#course-description').value.trim(),
+            target_date: document.querySelector('#course-target-date').value,
+            status: document.querySelector('#course-status').value,
+        };
     }
 
     // === API CALLS ===
